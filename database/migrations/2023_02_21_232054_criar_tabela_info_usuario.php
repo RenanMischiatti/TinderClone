@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('idade');
+            $table->string('data_nascimento');
             $table->string('biografia');
             $table->string('cidade');
             $table->timestamps();

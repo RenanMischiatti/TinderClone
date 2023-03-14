@@ -23,15 +23,16 @@ Route::middleware('auth')->group(function () {
     
     
     
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/cadastrar', [ProfileController::class, 'cadastro'])->name('profile.cadastro');
 
 
 
     Route::middleware('cadastrado')->group(function () {
 
         Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/profile/editar', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::delete('/profile/deletar', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         
     });
 });

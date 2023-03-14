@@ -20,8 +20,8 @@ class Cadastrado
 
          $usuario = User::where('id', Auth::user()->id)->first();
         if(!$usuario->cadastrado) {
-            
-            return redirect()->route('profile.edit');
+
+            return redirect()->route('profile.cadastro');
         }
 
         return $next($request);
