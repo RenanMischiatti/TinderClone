@@ -18,15 +18,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
             #area-foto {
-                display: flex;
-                height: 400px;
                 display: none;
             }
-            .image {
-                height: 100%;
-                border: 1px solid black;
-                background-position: center; 
-                background-size: cover
+            .images {
+                max-height: 300px
             }
         </style>
     </head>

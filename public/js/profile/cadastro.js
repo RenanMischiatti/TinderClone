@@ -1,33 +1,41 @@
 jQuery(document).ready(function(){
 
-var images = ""
-var imagens = []
+var imgHTML = ""
+var arrayImagens = []
 
 $('#foto').on('change', function() {
     let file = this.files
-    imagens.push(file[0])
+    arrayImagens.push(file[0])
     displayImages()
-    $('#area-foto').css('display', 'flex')
+    $('#area-foto').css('display', 'block')
+    
 })
 
 function displayImages() {
+    $('#foto').val('')
     
-    imagens.forEach((image, index) => {
-        images += 
+    arrayImagens.forEach((image, index) => {
+        imgHTML += 
         `
-        <div class="image" style="background: url('${URL.createObjectURL(image)}')">
-            <span onclick="deleteImage(${index})">&times;</span>
+        <div class="col-md-2">
+            <span class="excluir text-danger" data-valor="${index}">&times;</span>
+            <img src="${URL.createObjectURL(image)}" class="img-fluid images"> 
         </div>
         
         `
-    })
-    $('#area-foto').html(images)
+    })  
+
+    
+    $('#area-foto').html(imgHTML)
+    imgHTML = ''
+
+
 }
 
-function deleteImage(index) {
-    imagens.splice(index, 1)
+$(document).on('click', '.excluir', function() {
+    arrayImagens.splice($(this).attr('data-valor'), 1)
     displayImages()
-}
+})
 
 
 })
