@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 p-4 sm:p-8 dark:bg-gray-800 shadow sm:rounded-lg">
             
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                     {{ __('Informações da sua Conta') }}
@@ -18,7 +18,7 @@
         
                 <div>
                     <x-input-label for="name" :value="__('Nome completo')" />
-                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" required autofocus autocomplete="name" />
                     <x-input-error class="mt-2" :messages="$errors->get('name')" />
                 </div>
                 <div>
@@ -45,7 +45,7 @@
 
                 <div>
                     <x-input-label for="estado" :value="__('Foto de Perfil')" />
-                    <x-text-input id="foto" name="foto" type="file" class="mt-1 block w-75 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" />
+                    <input id="foto" name="foto" type="file" class="mt-1 block w-75 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" />
                     <x-input-error class="mt-2" :messages="$errors->get('foto')" />
                     <div id="area-foto"></div> 
 
