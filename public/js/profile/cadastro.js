@@ -8,12 +8,12 @@ $('#foto').on('change', function() {
     arrayImagens.push(file[0])
     displayImages()
     $('#area-foto').css('display', 'block')
-    
+    $('#foto').val('')
 })
 
 function displayImages() {
-    $('#foto').val('')
     
+
     arrayImagens.forEach((image, index) => {
         imgHTML += 
         `
@@ -25,11 +25,8 @@ function displayImages() {
         `
     })  
 
-    
     $('#area-foto').html(imgHTML)
     imgHTML = ''
-
-
 }
 
 $(document).on('click', '.excluir', function() {
