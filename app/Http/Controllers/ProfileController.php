@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\infoUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -28,7 +30,7 @@ class ProfileController extends Controller
     }
 
 
-    public function cadastro()
+    public function cadastroIndex()
     {
         $estados = $this->estados;
         $user = $this->request->user();
@@ -36,6 +38,24 @@ class ProfileController extends Controller
         return view('profile.partials.cadastro', compact(['estados', 'user']));
     }
 
+
+    public function cadastroCreate()
+    {
+        dd($this->request->all());
+
+        if(isset($this->request->imagem)){
+            $imagem_array_1 = explode(';', $this->request->imagem);
+            $imagem_array_2 = explode(',', $imagem_array_1[1]);
+            $imagem = base64_decode($imagem_array_2[1]);
+            $nomeImagem = date('d-m-y h:i:s') . 'png';
+        }
+
+
+        // infoUser::create()
+
+
+        Storage::disk('local')->put('img/', 'Contents');
+    }
     /**
      * Display the user's profile form.
      */

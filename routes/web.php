@@ -23,7 +23,8 @@ Route::middleware('auth')->group(function () {
     
     
     
-    Route::get('/profile/cadastrar', [ProfileController::class, 'cadastro'])->name('profile.cadastro');
+    Route::get('/profile/cadastrar', [ProfileController::class, 'cadastroIndex'])->name('profile.cadastro');
+    Route::post('/profile/cadastrar/create', [ProfileController::class, 'cadastroCreate'])->name('profile.cadastro.create');
 
 
 
