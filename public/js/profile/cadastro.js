@@ -52,7 +52,6 @@ jQuery(document).ready(function(){
         }).then(function(response){
             var formDados = $thisJquery.serializeArray();
             formDados.push({name: 'imagem', value: response})
-            console.log(formDados)
             $.ajax({
                 url: $this.action,
                 type: $this.method,
@@ -60,8 +59,11 @@ jQuery(document).ready(function(){
                 success:function(data)
                 {
                     console.log(data)
+                },
+                error: function(data)
+                {
+                    alert(data.responseJSON.message)
                 }
-
             })
         })
         

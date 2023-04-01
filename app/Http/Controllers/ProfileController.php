@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -41,14 +42,36 @@ class ProfileController extends Controller
 
     public function cadastroCreate()
     {
-        dd($this->request->all());
+        $validator = Validator::make($this->request->all(), [
+            'name' => 'required',
+            'estado' => 'required',
+            'idade' => 'required',
+            'imagem' => 'required',
+        ], [
+            'name.required' => 'O nome é necessário',
+            'estado.required' => 'O estado é necessário',
+            'idade.required' => 'Idade é necessario',
+            'imagem.required' => 'Imagem é necessária'
+        ]);
 
-        if(isset($this->request->imagem)){
+
+        if ($validator->passes()) {
             $imagem_array_1 = explode(';', $this->request->imagem);
             $imagem_array_2 = explode(',', $imagem_array_1[1]);
             $imagem = base64_decode($imagem_array_2[1]);
             $nomeImagem = date('d-m-y h:i:s') . 'png';
+
+            
+
+
+			return response()->json(['success'=>'Added new records.']);
+            
+        } else {
+            return response()->json(['error'=>$validator->errors()->all()]);
         }
+
+
+
 
 
         // infoUser::create()

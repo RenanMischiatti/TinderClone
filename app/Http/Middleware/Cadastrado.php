@@ -23,7 +23,7 @@ class Cadastrado
 
             return redirect()->route('profile.cadastro');
         }
-
+ 
         return $next($request);
     }
 }

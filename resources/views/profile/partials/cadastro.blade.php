@@ -24,13 +24,13 @@
                 </div>
                 <div class="mb-3">
                     <x-input-label for="idade" :value="__('Data de Nascimento')" />
-                    <x-text-input id="idade" name="idade" type="date" class="mt-1 block w-full"/>
+                    <x-text-input id="idade" name="idade" type="date" class="mt-1 block w-full" required/>
                     <x-input-error class="mt-2" :messages="$errors->get('idade')" />
 
                 </div>
                 <div class="mb-3">
                     <x-input-label for="estado" :value="__('Região')" />
-                    <select name="estado" id="estado" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                    <select name="estado" required id="estado" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                         <option disabled selected>--Selecione sua região</option>
                         @foreach ($estados as $estado)
                             <option value="{{$estado->nome}}">{{$estado->nome}}</option>
@@ -40,7 +40,7 @@
 
                 <div class="mb-3">
                     <x-input-label for="estado" :value="__('Biografia')" />
-                    <textarea id="biografia" name="biografia" type="text" class="mt-1 block w-full mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"/></textarea>
+                    <textarea id="biografia" required name="biografia" type="text" class="mt-1 block w-full mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"/></textarea>
                     <x-input-error class="mt-2" :messages="$errors->get('biografia')" />
                 </div>
 
