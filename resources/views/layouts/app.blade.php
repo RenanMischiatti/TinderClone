@@ -15,13 +15,41 @@
         <!-- Scripts -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-        <script src="{{asset('js/profile/cadastro.js')}}"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+        @yield('css')
+        @yield('js')
         <!-- Croppie ---> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .cr-boundary {
+                width: 100%!important;
+            }    
+            .cr-viewport {
+                width: 300px!important;
+                height: 300px!important;
+            }
+            .cursor-pointer {
+                cursor: pointer;
+            }
+            .acao {
+                transition: 0.2s ease all;
+                opacity: 0;
+            }
+            .acao:hover{
+                opacity: 1;
+            }
+
+            @media (max-width: 576px) {
+                .acao {
+                    opacity: 1;
+                    
+                }
+
+            }
+        </style>    
     </head>
+
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')

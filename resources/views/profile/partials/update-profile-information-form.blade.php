@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Profile Information') }}
+            {{ __('Informações de Perfil') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -18,12 +18,12 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-input-label for="name" :value="__('Nome')" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->info->nome)" required autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
-        <div>
+        {{-- <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
@@ -45,10 +45,26 @@
                     @endif
                 </div>
             @endif
+        </div> --}}
+
+        <div class="mb-3">
+            <x-input-label for="estado" :value="__('Região')" />
+            <select name="estado" required id="estado" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                <option disabled selected>--Selecione sua região</option>
+                @foreach ($estados as $estado)
+                    <option value="{{$estado->nome}}" @if($user->info->estado == $estado->nome) selected @endif>{{$estado->nome}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <x-input-label for="name" :value="__('Biografia')" />
+            <textarea class="mt-1 block w-full mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"/>{{$user->info->biografia}}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-secondary-button type="submit">{{ __('Salvar') }}</x-secondary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -57,7 +73,7 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Atualizado com sucesso.') }}</p>
             @endif
         </div>
     </form>

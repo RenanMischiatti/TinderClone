@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_info', function (Blueprint $table) {
+        Schema::create('users_photo', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('nome');
-            $table->date('data_nascimento');
-            $table->text('biografia');
-            $table->string('estado');
+            $table->string('foto_caminho');
+            $table->integer('ordem_fotos');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('users_photo');
     }
 };

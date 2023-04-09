@@ -9,15 +9,15 @@ jQuery(document).ready(function(){
     $image_crop = $('#area-foto').croppie({
         enableExif: true,
         viewPort: {
-            width: 200,
-            height: 200,
+            width: 600,
+            height: 600,
         },
         boundary: {
-            width:300,
-            height:300
+            width: 500,
+            height:500
         }
     });
-
+    
     $('#foto').on('change', function() {
 
         let extPermitidas = ['jpg', 'png', 'svg'];
@@ -58,7 +58,7 @@ jQuery(document).ready(function(){
                 data: formDados, 
                 success:function(data)
                 {
-                    console.log(data)
+                    window.location.href = data
                 },
                 error: function(data)
                 {
@@ -68,7 +68,5 @@ jQuery(document).ready(function(){
         })
         
     })
-
-
-
+    
 })

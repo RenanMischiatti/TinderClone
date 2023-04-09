@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('cadastrado')->group(function () {
 
-        Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+        Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
         Route::get('/profile/editar', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::delete('/profile/deletar', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
