@@ -1,5 +1,12 @@
 jQuery(document).ready(function(){
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
     //Adicionar Foto
 
     $image_crop = $('#area-foto').croppie({
@@ -14,7 +21,9 @@ jQuery(document).ready(function(){
         },
     });
 
-    $(document).on('change', '#inputFoto' , function(e) {
+    $(document).on('change', '#inputFoto' , function() {
+
+        
 
         let extPermitidas = ['jpg', 'png', 'svg'];
         var extArquivo = $(this).val().split('.').pop();
@@ -42,7 +51,32 @@ jQuery(document).ready(function(){
         
     })
 
+    $(document).on('submit', '#adicionarFoto', function(e) {
+        e.preventDefault();
 
+        var $this = this
+        $image_crop.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function(response){
+            $.ajax({
+                url: $this.action,
+                type: $this.method,
+                data: {foto: response}, 
+                success:function(data)
+                {
+                    window.location.href = data
+                },
+                error: function(data)
+                {
+                    alert(data.responseJSON.message)
+                }
+            })
+        })
+
+
+
+    })
 
 
 

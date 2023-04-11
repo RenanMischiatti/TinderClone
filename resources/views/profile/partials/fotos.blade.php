@@ -37,20 +37,23 @@
 
 <div class="modal fade" id="modalFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-    <div class="modal-content bg-dark">
-        <div class="modal-header border-0">
-            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <input type="file" id="inputFoto" style="opacity:0; pointer-events: none;" accept="image/*">
-            <div id="area-foto">
+        <div class="modal-content bg-dark">
+            <form action="{{route('profile.adicionar.foto')}}" method="POST" id="adicionarFoto">
+                <div class="modal-header border-0">
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="file" id="inputFoto" style="opacity:0; pointer-events: none;" accept="image/*">
+                    <div id="area-foto">
 
-            </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button class="btn btn-outline-success" type="submit"> + </button>
+                </div>
+            </form>
+
         </div>
-        <div class="modal-footer border-0">
-            <button class="btn btn-outline-success"> + </button>
-        </div>
-    </div>
     </div>
 </div>
 

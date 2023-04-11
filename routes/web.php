@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -23,15 +24,18 @@ Route::middleware('auth')->group(function () {
     
     
     
-    Route::get('/profile/cadastrar', [ProfileController::class, 'cadastroIndex'])->name('profile.cadastro');
-    Route::post('/profile/cadastrar/create', [ProfileController::class, 'cadastroCreate'])->name('profile.cadastro.create');
+    Route::get('/profile/cadastrar', [CadastroController::class, 'cadastroIndex'])->name('profile.cadastro');
+    Route::post('/profile/cadastrar/create', [CadastroController::class, 'cadastroCreate'])->name('profile.cadastro.create');
 
 
 
     Route::middleware('cadastrado')->group(function () {
 
         Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
-        Route::get('/profile/editar', [ProfileController::class, 'edit'])->name('profile.edit');
+
+
+        Route::get('/profile', [ProfileController::class, 'perfil'])->name('profile.edit');
+        Route::post('/profile/addFoto', [ProfileController::class, 'adicionarFoto'])->name('profile.adicionar.foto');
         Route::delete('/profile/deletar', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         
