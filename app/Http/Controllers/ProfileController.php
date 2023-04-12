@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
+use App\Traits\fotoTrait;
 
 class ProfileController extends Controller
 {
+    use fotoTrait;
+
     public $request;
     protected $estados;
 
@@ -59,12 +62,6 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
-
-    public function Fotos(Request $request)
-    {
-        dd($request->all());
-    }
-
     /**
      * Delete the user's account.
      */

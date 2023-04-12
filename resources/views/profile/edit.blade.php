@@ -18,9 +18,9 @@
                 </div>
 
                 <div class="p-4 sm:p-8 dark:bg-gray-800 shadow sm:rounded-lg" style="border: 1px solid red">
-                    <div class="col-sm-6 col-12 p-0">
+                    <div class="col-12 p-0">
                         <div class="w-100 h-100">
-                            <div class="row">
+                            <div class="row" id="fotos">
                                 @include('profile.partials.fotos')
                             </div>
                         </div>

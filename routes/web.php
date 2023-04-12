@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
 
 
         Route::get('/profile', [ProfileController::class, 'perfil'])->name('profile.edit');
-        Route::post('/profile/addFoto', [ProfileController::class, 'adicionarFoto'])->name('profile.adicionar.foto');
+        Route::post('/profile/adicionar-foto', [ProfileController::class, 'adicionarFoto'])->name('profile.adicionar.foto');
         Route::delete('/profile/deletar', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         

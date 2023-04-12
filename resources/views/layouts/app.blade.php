@@ -39,7 +39,6 @@
             .acao:hover{
                 opacity: 1;
             }
-
             @media (max-width: 576px) {
                 .acao {
                     opacity: 1;

@@ -1,8 +1,7 @@
-@foreach ($user->foto->sortBy('ordem_fotos') as $key => $fotos)
+@foreach ($user->foto->sortBy('ordem_fotos') as $fotos)
                     
-    <div class="col-4 d-flex p-2 fotoPerfil">
+    <div class="col-4 col-md-2 d-flex p-2">
         <div class="w-100 h-100 position-relative">
-            
             <div class="position-absolute w-100 h-100 d-flex">
                 <div class="col-6 d-flex justify-center align-items-center acao">
                     <span class="p-2 bg-primary border border-dark rounded-circle">
@@ -25,15 +24,15 @@
         </div>
     </div>
     
-    @if($key < 9)
-        <div class="col-4 py-2 d-flex justify-content-center align-items-center cursor-pointer fotoPerfil position-relative" onclick='$("#inputFoto").click()'>
-            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="white" class="img-fluid w-25" class="bi bi-image" viewBox="0 0 16 16">
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
-        </div>
-    @endif
+    
 @endforeach
-
+@if(count($user->foto) < 9)
+    <div class="col-4 col-md-2 d-flex justify-content-center align-items-center cursor-pointer position-relative" onclick='$("#inputFoto").click()'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="white" class="img-fluid w-25" class="bi bi-image" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+    </div>
+@endif
 
 <div class="modal fade" id="modalFoto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
