@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+$(document).ready(function() {
 
     $.ajaxSetup({
         headers: {
@@ -6,10 +6,8 @@ jQuery(document).ready(function(){
         }
     });
 
-    $(window).on('load', function(e) {
-        inicializarFoto();
-    })
-
+    inicializarFoto()
+    
     function inicializarFoto() {  
         //Adicionar Foto
         $('#area-foto').croppie('destroy');
@@ -25,9 +23,8 @@ jQuery(document).ready(function(){
             },
         });
 
+        //Modal de Adicionar Foto
         $(document).on('change', '#inputFoto' , function() {
-
-            
 
             let extPermitidas = ['jpg', 'png', 'svg'];
             var extArquivo = $(this).val().split('.').pop();
@@ -54,9 +51,29 @@ jQuery(document).ready(function(){
 
             
         })
+
+        $(document).on('click', '#excluirFoto' ,function() {
+                $.ajax({
+                    url: $(this).attr('data-rota'),
+                    type: 'POST',
+                    data: {foto_id: $(this).attr('data-foto')}, 
+                    success:function(data)
+                    {
+                        if(data.sucesso) {
+                            $('#fotos').html(data.html);
+                        }
+                    },
+                    error: function(data)
+                    {
+                        alert(data.responseJSON.message)
+                    }
+                })
+        })
+
     }
 
-    $(document).on('submit', '#adicionarFoto', function(e) {
+    //Submit Foto
+    $('#adicionarFoto').on('submit', function(e) {
         e.preventDefault();
 
         var $this = this
@@ -70,10 +87,10 @@ jQuery(document).ready(function(){
                 data: {foto: response}, 
                 success:function(data)
                 {
-                    if(data) {
+                    if(data.sucesso) {
                         $('#modalFoto').modal('hide');
-                        $('#fotos').load(window.location.href + ' #fotos > div');
-                        inicializarFoto();
+                        $('#fotos').html(data.html);
+                        $('#inputFoto').val("")
                     }
                 },
                 error: function(data)
@@ -83,8 +100,7 @@ jQuery(document).ready(function(){
             })
         })
 
-
-
     })
+    
 
 })

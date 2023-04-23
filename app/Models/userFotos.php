@@ -11,5 +11,5 @@ class userFotos extends Model
 
     protected $table = 'users_photo';
 
-    protected $fillable = ['user_id', 'foto_caminho', 'ordem_fotos'];
+    protected $fillable = ['user_id', 'foto_caminho'];
 }

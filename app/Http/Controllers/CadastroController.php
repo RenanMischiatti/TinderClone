@@ -78,8 +78,7 @@ class CadastroController extends Controller
 
                 userFotos::create([
                     'user_id' => Auth::user()->id,
-                    'foto_caminho' => 'foto_perfil/'.$nomeImagem,
-                    'ordem_fotos' => 1
+                    'foto_caminho' => 'foto_perfil/'.$nomeImagem
                 ]);
 
                 DB::commit();

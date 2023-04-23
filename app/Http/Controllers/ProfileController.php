@@ -41,6 +41,7 @@ class ProfileController extends Controller
 
         return view('profile.edit', [
             'user' => $request->user(),
+            'divUser' => $this->fotoUser(),
             'estados' => $estados
         ]);
     }
@@ -67,9 +68,24 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);
+
+        infoUser::where('user_id', $request->user()->id)->delete();
+        $fotos = userFotos::where('user_id', $request->user()->id)->get();
+
+        if(count($fotos)) {
+            foreach($fotos as $foto) {
+                $fotoDB = userFotos::where('id', $foto->id);
+            
+                if($fotoDB->delete()) {
+                    File::delete(public_path('storage/'.$foto->foto_caminho));
+                }
+            }
+        }
+
 
         $user = $request->user();
 
