@@ -79,7 +79,8 @@ $(document).ready(function() {
         var $this = this
         $image_crop.croppie('result', {
             type: 'canvas',
-            size: 'viewport'
+            size: 'viewport',
+            quality: 1 
         }).then(function(response){
             $.ajax({
                 url: $this.action,

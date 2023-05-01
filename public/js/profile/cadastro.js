@@ -48,7 +48,8 @@ jQuery(document).ready(function(){
         var $thisJquery = $(this)
         $image_crop.croppie('result', {
             type: 'canvas',
-            size: 'viewport'
+            size: 'viewport',
+            quality: 1 
         }).then(function(response){
             var formDados = $thisJquery.serializeArray();
             formDados.push({name: 'imagem', value: response})
