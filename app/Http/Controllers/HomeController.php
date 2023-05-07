@@ -11,7 +11,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $users = User::with('info', 'foto')->where('id', '!=', Auth::user()->id)->get();
+        $users = User::Has('info')
+        ->with('info', 'foto')
+        ->where('id', '!=', Auth::user()->id)
+        ->get();
+
+        
+
 
         return view('dashboard', compact('users'));
     }

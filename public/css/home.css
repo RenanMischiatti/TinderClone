@@ -1,0 +1,198 @@
+.demo {
+    width: 100%;
+    font-family: 'Montserrat';
+}
+.demo__content {
+    overflow: hidden;
+    position: relative;
+    padding-top: 4.5rem;
+    user-select: none;
+    display: flex;
+}
+.demo__card-cont {
+    position: relative;
+    width: 95%;
+    max-width: 24rem;
+    height: 32rem;
+    margin: 0 auto 10rem;
+}
+@media ( max-height: 768px )
+{
+    .demo__content {
+        padding-top: 10px;
+    }
+
+    .demo__card-cont {
+        margin: 0 auto;
+    }
+
+    .demo__card__top {
+        height: 80%!important;
+    }
+}
+
+@media (max-width: 768px) { 
+
+    .demo__card-cont {
+        margin: 0 auto 7rem;
+    }
+
+    .demo__card__top {
+        height: 100%;
+    }
+}
+.demo__card {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 100%;
+}
+.demo__card.reset {
+    transition: transform 0.3s;
+    transform: translateX(0) !important;
+}
+.demo__card.reset .demo__card__choice {
+    transition: opacity 0.3s;
+    opacity: 0 !important;
+}
+.demo__card.inactive {
+    transition: transform 0.3s;
+}
+.demo__card.to-left {
+    transform: translateX(-30rem) rotate(-30deg) !important;
+}
+.demo__card.to-right {
+    transform: translate(30rem) rotate(30deg) !important;
+}
+.demo__card.below {
+    z-index: 1;
+}
+.demo__card__top {
+    height: 100%;
+}
+
+.demo__card__img {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+}
+.demo__card__name {
+    display: block;
+    color: #fff;
+    width: 100%!important;
+    padding-left: 5px;
+}
+.demo__card__name .info{
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+.demo__card__name .nome{
+    max-width: 75%;
+}
+
+.demo__card__name .descricao{
+    font-size: 0.9em;
+    display: block;
+}
+.demo__card__btm {
+    height: auto;
+    background: #ffffff;
+}
+.demo__card__choice {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.demo__card__choice:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin-left: -1rem;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: -2rem -3rem #fff, 2rem -3rem #fff;
+}
+.demo__card__choice:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4rem;
+    height: 1.5rem;
+    margin-left: -2rem;
+    border: 0.6rem solid #fff;
+    border-bottom: none;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+.demo__card__choice.m--reject {
+    background: #ff5a5a;
+}
+.demo__card__choice.m--like {
+    background: #b1da96;
+}
+.demo__card__choice.m--like:after {
+    transform: scaleY(-1);
+}
+.demo__card__drag {
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+.demo__tip {
+    text-align: center;
+    font-size: 2.2rem;
+}
+.botoesAction {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 0px;
+}
+  
+.botoesAction  button {
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+}
+  
+.botoesAction  button:hover {
+    transform: scale(1.1);
+}
+  
+.botoesAction button:focus {
+    outline: none;
+}
+  
+.botoesAction .like {
+    color: #f44336;
+}
+  
+.botoesAction .dislike {
+    color: #2196f3;
+}
+  
