@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   var animating = false;
   var cardsCounter = 0;
-  var numOfCards = 6;
+  var numOfCards = 3;
   var decisionVal = 80;
   var pullDeltaX = 0;
   var deg = 0;
@@ -18,21 +18,30 @@ $(document).ready(function() {
     var likeOpacity = (opacity <= 0) ? 0 : opacity;
     $cardReject.css("opacity", rejectOpacity);
     $cardLike.css("opacity", likeOpacity);
+
+    $('.botoesAction').css("opacity", 0)
   };
 
   function release() {
 
     if (pullDeltaX >= decisionVal) {
       $card.addClass("to-right");
-      setTimeout(function() {
-        $card.remove()
-      }, 300)
-    } else if (pullDeltaX <= -decisionVal) {
-      $card.addClass("to-left");
+
       setTimeout(function() {
         $card.remove()
       }, 300)
 
+      let user_id = $card.find('.like').data('user-id');
+      likeDislike(user_id, 'like')
+    } else if (pullDeltaX <= -decisionVal) {
+      $card.addClass("to-left");
+
+      setTimeout(function() {
+        $card.remove()
+      }, 300)
+
+      let user_id = $card.find('.like').data('user-id');
+      likeDislike(user_id, 'like')
     }
 
     if (Math.abs(pullDeltaX) >= decisionVal) {
@@ -77,10 +86,34 @@ $(document).ready(function() {
     });
 
     $(document).on("mouseup touchend", function() {
+    $('.botoesAction').css("opacity", 1)
+
       $(document).off("mousemove touchmove mouseup touchend");
       if (!pullDeltaX) return; // prevents from rapid click events
       release();
     });
   });
 
-});
+
+  $('.like').on("click ontouchstart", function(e) {
+
+    $(this).closest('.demo__card').find('.m--like').css('opacity', '1');
+    pullDeltaX = 81
+    release()
+
+  })
+
+  $(document).on("click ontouchstart", '.dislike', function(e) {
+    
+    $(this).closest('.demo__card').find('.m--reject').css('opacity', '1');
+    pullDeltaX = -81
+    release()
+  })
+
+}); 
+
+function likeDislike(user_id, action) {
+    
+}
+
+  

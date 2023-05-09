@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
     
     $('#foto').on('change', function() {
 
-        let extPermitidas = ['jpg', 'png', 'svg'];
+        let extPermitidas = ['jpg', 'png', 'svg', 'jpeg'];
         var extArquivo = $(this).val().split('.').pop();
 
         if(typeof extPermitidas.find(function(ext){ return extArquivo == ext; }) != 'undefined') {
