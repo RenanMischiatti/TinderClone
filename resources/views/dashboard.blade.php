@@ -21,7 +21,7 @@
 
                     <div class="demo__card">
                         <div class="demo__card__top d-flex flex-column">
-                            <div class="demo__card__img" style="background-image: url('{{'storage'.asset($user->foto->first()->foto_caminho)}}')">
+                            <div class="demo__card__img" style="background-image: url('{{$user->foto->first()->FotCaminho}}')">
                                 <span class="demo__card__name">
                                     <span class="info d-flex">
                                         <span class="text-truncate nome">

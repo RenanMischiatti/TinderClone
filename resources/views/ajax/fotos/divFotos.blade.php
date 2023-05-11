@@ -12,7 +12,7 @@
                         </span>
                     </div>
                 </div>
-                <img src="{{asset('storage/'.$fotos->foto_caminho)}}" class="img-fluid cursor-pointer fotoPerfil">
+                <img src="{{$fotos->FotCaminho}}" class="img-fluid cursor-pointer fotoPerfil">
             </div>
         </div>
     @endforeach
