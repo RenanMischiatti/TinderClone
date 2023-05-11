@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('cadastrado')->group(function () {
 
         Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
+        Route::get('/like-dislike', [HomeController::class, 'likeDislike'])->name('action.like.dislike');
 
 
         Route::get('/profile', [ProfileController::class, 'perfil'])->name('profile.edit');

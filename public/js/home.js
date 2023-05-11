@@ -101,6 +101,8 @@ $(document).ready(function() {
     pullDeltaX = 81
     release()
 
+    likeDislike($(this).data('data-user'), 'like', $(this).data('rota-like'))
+
   })
 
   $(document).on("click ontouchstart", '.dislike', function(e) {
@@ -108,12 +110,21 @@ $(document).ready(function() {
     $(this).closest('.demo__card').find('.m--reject').css('opacity', '1');
     pullDeltaX = -81
     release()
+
+    likeDislike($(this).data('data-user'), 'dislike', $(this).data('rota-like'))
   })
 
 }); 
 
-function likeDislike(user_id, action) {
-    
+function likeDislike(user_id, action, rota) {
+    $.ajax({
+        method: 'post',
+        url: rota,
+        data: {user_id: user_id, acao: action},
+        success: function(result) {
+          console.log(result)
+        }
+    })
 }
 
   
