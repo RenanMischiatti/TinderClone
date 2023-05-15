@@ -11,5 +11,5 @@ class RegraLike extends Model
 
     protected $table = 'regra_like';
 
-    protected $fillable = ['user_like', 'user_liked'];
+    protected $fillable = ['user_like', 'user_liked', 'liked_or_not'];
 }

@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+
   var animating = false;
   var cardsCounter = 0;
   var numOfCards = 3;
@@ -32,7 +39,9 @@ $(document).ready(function() {
       }, 300)
 
       let user_id = $card.find('.like').data('user-id');
-      likeDislike(user_id, 'like')
+      let rota = $card.find('.like').data('rota-like')
+
+      likeDislike(user_id, 'like', rota)
     } else if (pullDeltaX <= -decisionVal) {
       $card.addClass("to-left");
 
@@ -40,8 +49,9 @@ $(document).ready(function() {
         $card.remove()
       }, 300)
 
-      let user_id = $card.find('.like').data('user-id');
-      likeDislike(user_id, 'like')
+      let user_id = $card.find('.dislike').data('user-id');
+      let rota = $card.find('.dislike').data('rota-like')
+      likeDislike(user_id, null, rota)
     }
 
     if (Math.abs(pullDeltaX) >= decisionVal) {
@@ -96,35 +106,32 @@ $(document).ready(function() {
 
 
   $('.like').on("click ontouchstart", function(e) {
-
     $(this).closest('.demo__card').find('.m--like').css('opacity', '1');
     pullDeltaX = 81
     release()
-
-    likeDislike($(this).data('data-user'), 'like', $(this).data('rota-like'))
-
   })
 
   $(document).on("click ontouchstart", '.dislike', function(e) {
-    
+    console.log($(this).data('rota-like'))
     $(this).closest('.demo__card').find('.m--reject').css('opacity', '1');
     pullDeltaX = -81
     release()
-
-    likeDislike($(this).data('data-user'), 'dislike', $(this).data('rota-like'))
   })
+
+  function likeDislike(user_id, action, rota) { 
+      $.ajax({
+          type: 'POST',
+          url: rota,
+          data: {user_id: user_id, acao: action},
+          success: function(result) {
+            console.log(result)
+          }
+      })
+  }
+
+
 
 }); 
 
-function likeDislike(user_id, action, rota) {
-    $.ajax({
-        method: 'post',
-        url: rota,
-        data: {user_id: user_id, acao: action},
-        success: function(result) {
-          console.log(result)
-        }
-    })
-}
 
   
