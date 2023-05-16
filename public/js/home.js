@@ -123,8 +123,15 @@ $(document).ready(function() {
           type: 'POST',
           url: rota,
           data: {user_id: user_id, acao: action},
-          success: function(result) {
-            console.log(result)
+          success: function(match) {
+            
+            alert('calma...')
+            if(match) {
+              alert('entrou')
+              $('#areaModal').html(match)
+              $('#modalModular').modal('show')
+            }
+
           }
       })
   }

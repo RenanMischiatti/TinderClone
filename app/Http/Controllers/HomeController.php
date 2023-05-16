@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\infoUser;
 use App\Models\RegraLike;
 use App\Models\User;
+use App\Traits\ModalTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
+    use ModalTrait;
 
     protected $request;
 
@@ -39,24 +41,27 @@ class HomeController extends Controller
 
     public function likeDislike()
     {
-        $curtido = RegraLike::where('user_liked', Auth()->user()->id)
-        ->where('user_like', $this->request->user)
-        ->where('liked_or_not', 1)
-        ->exists();
-
-        if($curtido) {
-            return $this->modalAviso();
-        }
-
         RegraLike::create([
             'user_like' => Auth()->user()->id,
             'user_liked' => $this->request->user_id,
             'liked_or_not' => isset($this->request->acao)
         ]);
 
+        $curtido = RegraLike::where('user_like', $this->request->user_id)
+        ->where('user_liked', Auth()->user()->id)
+        ->where('liked_or_not', 1)
+        ->exists();
 
+        if($curtido && isset($this->request->acao)){
+            $userCurtido = User::where('id', $this->request->user_id)->firstorFail();
+            return $this->openModal(view('ajax.home.avisoMatch', compact('userCurtido'))->render(), [
+                'titulo' => 'VOCÊ DEU MATCH!!!!',
+                'classesDialog' => 'modal-lg modal-dialog-centered',
+                'footer' => false
+            ]);
+        } 
 
-        return $this->request->acao;
+        return false;
     }
 
 }
