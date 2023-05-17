@@ -12,6 +12,7 @@ trait ModalTrait
             'estatico' => false,
             'classesDialog' => '',
             'titulo' => 'Titulo Padrão Modal',
+            'classesTitulo' => '',
             'footer' => true,
             'closeButton' => true,
             'submitButton' => true,

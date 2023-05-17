@@ -4,7 +4,7 @@
           
         @if ($configModal['header'])
             <div class="modal-header">
-                <h1 class="modal-title fs-5">{{$configModal['titulo']}}</h1>
+                <h1 class="modal-title fs-5 {{$configModal['classesTitulo']}}">{{$configModal['titulo']}}</h1>
                 @if ($configModal['closeButton'])
                     <button type="button" data-bs-dismiss="modal" aria-label="Close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
@@ -14,6 +14,7 @@
                 @endif
             </div>
         @endif
+
         <div class="modal-body">
           {!! $view !!}
         </div>

@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class infoUser extends Model
 {
@@ -25,8 +26,8 @@ class infoUser extends Model
 
     public function getPrimeirosNomesAttribute()
     {
-        $nomes = explode(' ', $this->attributes['nome']);
-
+        $nomes = explode(' ', ucwords($this->attributes['nome']));
+        
         if (count($nomes) >= 2) {
             return $nomes[0] . ' ' . $nomes[1];
         } else {

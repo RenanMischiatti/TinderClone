@@ -55,8 +55,10 @@ class HomeController extends Controller
         if($curtido && isset($this->request->acao)){
             $userCurtido = User::where('id', $this->request->user_id)->firstorFail();
             return $this->openModal(view('ajax.home.avisoMatch', compact('userCurtido'))->render(), [
-                'titulo' => 'VOCÊ DEU MATCH!!!!',
-                'classesDialog' => 'modal-lg modal-dialog-centered',
+                'titulo' => 'Você deu Match com alguem...',
+                'classesTitulo' => 'w-100 text-center',
+                'closeButton' => false,
+                'classesDialog' => 'modal-md modal-dialog-centered',
                 'footer' => false
             ]);
         } 

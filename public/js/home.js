@@ -125,11 +125,8 @@ $(document).ready(function() {
           data: {user_id: user_id, acao: action},
           success: function(match) {
             
-            alert('calma...')
             if(match) {
-              alert('entrou')
-              $('#areaModal').html(match)
-              $('#modalModular').modal('show')
+              $('#areaModal').abrirModal(match)
             }
 
           }
