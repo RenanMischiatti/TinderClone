@@ -22,6 +22,15 @@
                         {{ __('Perfil') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')" class="position-relative">
+                        {{ __('Conversas') }}
+                        <span class="position-absolute top-30 start-100 translate-middle badge rounded-pill bg-danger">
+                            1+
+                        <span class="visually-hidden">unread messages</span>
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -40,10 +49,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        {{-- <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Perfil') }}
-                        </x-dropdown-link> --}}
-
+                        
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -84,7 +90,13 @@
                 <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                     {{ __('Perfil') }}
                 </x-responsive-nav-link>
-
+                
+                <x-responsive-nav-link :href="route('chat.index')" :active="request()->routeIs('chat.index')">
+                    {{ __('Conversas') }}
+                    <span class="badge rounded-pill bg-danger">
+                        1+
+                    <span class="visually-hidden">unread messages</span>
+                </x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

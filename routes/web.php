@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CadastroController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/profile/deletar', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         
+        Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+
     });
 });
 
