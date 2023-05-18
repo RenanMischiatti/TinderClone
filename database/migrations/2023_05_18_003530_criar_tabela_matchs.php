@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('match', function (Blueprint $table) {
             $table->id();
             $table->index('id');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('cadastrado')->default(0);
-            $table->rememberToken();
+
+            $table->unsignedBigInteger('user_one');
+            $table->foreign('user_one')->references('id')->on('users')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('user_two');
+            $table->foreign('user_two')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+
     }
 };
