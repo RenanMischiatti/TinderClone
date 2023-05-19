@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\infoUser;
+use App\Models\Matchs;
 use App\Models\RegraLike;
 use App\Models\User;
 use App\Traits\ModalTrait;
@@ -54,6 +55,12 @@ class HomeController extends Controller
 
         if($curtido && isset($this->request->acao)){
             $userCurtido = User::where('id', $this->request->user_id)->firstorFail();
+
+            Matchs::create([
+                'user_one' => Auth()->user()->id,
+                'user_two' => $this->request->user_id
+            ]);
+
             return $this->openModal(view('ajax.home.avisoMatch', compact('userCurtido'))->render(), [
                 'titulo' => 'Você deu Match com alguem...',
                 'classesTitulo' => 'w-100 text-center',
