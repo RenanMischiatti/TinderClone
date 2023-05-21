@@ -25,6 +25,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
+            #mainArea {
+                flex: 1;
+                height: 100%;
+            }
             .cr-boundary {
                 width: 100%!important;
             }    
@@ -56,7 +60,7 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 d-flex flex-column">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -69,7 +73,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main id="mainArea">
                 {{ $slot }}
             </main>
             <div id="areaModal"></div>

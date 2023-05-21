@@ -1,0 +1,7 @@
+#mainArea {
+    display: flex;
+}
+#chatMain {
+    width: 100%;
+    flex: 1;
+}
