@@ -10,17 +10,12 @@ class ChatController extends Controller
 {
     public function index()
     {
-
         $matchs = Matchs::where(function($query) {
-            $query->where('user_one', Auth()->user()->id)
-            ->orWhere('user_two', Auth()->user()->id);
+            $query->where('user_one', Auth()->user()->id);
         })
-        ->when()
-        ->with('user')
+        ->with('userMatched', 'userMatched.info', 'userMatched.foto')
         ->get();
 
-        dd($matchs);
-
-        return view('chat');
+        return view('chat', compact('matchs'));
     }
 }

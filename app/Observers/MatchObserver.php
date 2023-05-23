@@ -12,18 +12,11 @@ class MatchObserver
      */
     public function created(Matchs $match)
     {
-        $users = [
-            $match->user_one,
-            $match->user_two
-        ];
-        
-        foreach ($users as $user_id) {
-            MatchAlert::create([
-                'match_id' => $match->id,
-                'user_alerted' => $user_id,
-                'visualized' => false,
-            ]);
-        }
+        MatchAlert::create([
+            'match_id' => $match->id,
+            'user_alerted' => $match->user_one,
+            'visualized' => false,
+        ]);
     }
 
     /**

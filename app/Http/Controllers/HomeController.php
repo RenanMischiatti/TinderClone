@@ -60,6 +60,10 @@ class HomeController extends Controller
                 'user_one' => Auth()->user()->id,
                 'user_two' => $this->request->user_id
             ]);
+            Matchs::create([
+                'user_one' => $this->request->user_id,
+                'user_two' => Auth()->user()->id
+            ]);
 
             return $this->openModal(view('ajax.home.avisoMatch', compact('userCurtido'))->render(), [
                 'titulo' => 'Você deu Match com alguem...',

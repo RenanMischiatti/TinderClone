@@ -15,8 +15,8 @@
     <main id="chatMain">
         <div class="row m-0 h-100 d-flex">
             <div class="col-md-3" id="conversas" style="border: 3px solid red">
-                    @foreach ($usersMactheds as $user)
-                        
+                    @foreach ($matchs as $match)
+                        {{$match->userMatched->info->nome}}
                     @endforeach
 
 
