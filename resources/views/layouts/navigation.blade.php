@@ -28,7 +28,7 @@
                         {{ __('Conversas') }}
                         <span class="position-absolute top-30 start-100 translate-middle badge rounded-pill bg-danger">
                             1+
-                        <span class="visually-hidden">unread messages</span>
+                        </span>
                     </x-nav-link>
                 </div>
             </div>

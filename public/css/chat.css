@@ -5,3 +5,33 @@
     width: 100%;
     flex: 1;
 }
+#conversas {
+    border-right: 1px solid #adb5bd09;
+}
+.usuario {
+    height: 90px;
+    max-height: 100px;
+    display: flex;
+    font-family: 'Montserrat';
+    background-color: #adb5bd09;
+    margin: 5px 0px;
+    border-radius: 7px;
+    padding: 1px 16px;
+    transition: ease 0.4s all;
+    cursor: pointer;
+}
+.usuario img {
+    max-height: 85%;
+    min-height: 40%;
+}
+.usuario:hover {
+    background-color: #adb5bd1c;
+}
+.horario {
+    font-size: 10px;
+    color: #adb5bd;
+}
+.ultimaMensagem {
+    font-size: 12px;
+    color: #81868b;
+}

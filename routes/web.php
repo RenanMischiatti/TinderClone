@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
         
         Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+        Route::get('/chat/acess', [ChatController::class, 'chat'])->name('chat.acess');
 
     });
 });

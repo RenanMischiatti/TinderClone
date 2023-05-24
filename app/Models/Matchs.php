@@ -13,8 +13,24 @@ class Matchs extends Model
 
     protected $fillable = ['user_one', 'user_two'];
 
-    public function userMatched()
+    public function userOne()
     {
-        return $this->belongsTo(User::class, 'user_two', 'id');
+        return $this->belongsTo(User::class, 'user_one', 'id')
+                    ->where('id', '!=', Auth()->user()->id)
+                    ->with('info', 'foto');
+    }
+    public function userTwo()
+    {
+        return $this->belongsTo(User::class, 'user_two', 'id')
+                    ->where('id', '!=', Auth()->user()->id)
+                    ->with('info', 'foto');
+    }
+
+    public function user()
+    {
+        $userId = auth()->id();
+
+        return $this->belongsToMany(User::class, 'user_one', 'id');
+            // ->where('user_id', '<>', $userId);
     }
 }
