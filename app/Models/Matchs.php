@@ -25,12 +25,4 @@ class Matchs extends Model
                     ->where('id', '!=', Auth()->user()->id)
                     ->with('info', 'foto');
     }
-
-    public function user()
-    {
-        $userId = auth()->id();
-
-        return $this->belongsToMany(User::class, 'user_one', 'id');
-            // ->where('user_id', '<>', $userId);
-    }
 }

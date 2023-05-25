@@ -15,10 +15,13 @@ class ChatController extends Controller
             $query->where('user_one', Auth()->user()->id)
                   ->orWhere('user_two', Auth()->user()->id);
         })
-        ->with(['user_one', 'user_two'])
-        ->get();
+        ->with(['userOne', 'userTwo'])
+        ->get()
+        ->map(function ($match) {
+            $match->userMatched = isset($match->userOne) ? $match->userOne : $match->userTwo;
+            return $match;
+        });
 
-        dd($matchs);
         return view('chat', compact('matchs'));
     }
 }
