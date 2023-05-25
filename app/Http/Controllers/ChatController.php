@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
+
+    protected $request;
+
+    public function __construct(Request $request) {
+        $this->request = $request;
+    }
+
     public function index()
     {
         $matchs = Matchs::where(function($query) {
@@ -23,5 +30,12 @@ class ChatController extends Controller
         });
 
         return view('chat', compact('matchs'));
+    }
+
+    public function chat()
+    {
+        
+
+        return 
     }
 }
