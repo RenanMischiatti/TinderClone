@@ -25,4 +25,9 @@ class Matchs extends Model
                     ->where('id', '!=', Auth()->user()->id)
                     ->with('info', 'foto');
     }
+
+    public function getUserMatchedAttribute()
+    {
+        return isset($this->userOne) ? $this->userOne : $this->userTwo;
+    }
 }

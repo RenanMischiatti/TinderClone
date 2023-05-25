@@ -4,6 +4,10 @@ $(document).ready( function () {
         $.ajax({
             method: 'post',
             url: $(this).data('rota'),
+            data: {id : $(this).data('id')},
+            success: function(data) {
+                
+            }
         })
     })
 

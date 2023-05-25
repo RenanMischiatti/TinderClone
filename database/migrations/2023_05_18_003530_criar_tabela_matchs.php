@@ -17,9 +17,12 @@ return new class extends Migration
 
             $table->unsignedBigInteger('user_one');
             $table->foreign('user_one')->references('id')->on('users')->onDelete('cascade');
-            
+            $table->index('user_one');
+
             $table->unsignedBigInteger('user_two');
             $table->foreign('user_two')->references('id')->on('users')->onDelete('cascade');
+            $table->index('user_two');
+
 
             $table->timestamps();
         });

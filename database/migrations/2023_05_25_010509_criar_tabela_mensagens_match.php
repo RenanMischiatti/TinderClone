@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('match_notification', function (Blueprint $table) {
+        Schema::create('mensagens_match', function (Blueprint $table) {
             $table->id();
-            
-            $table->unsignedBigInteger('match_id');
-            $table->foreign('match_id')->references('id')->on('match')->onDelete('cascade');
+            $table->index('id');
 
-            $table->unsignedBigInteger('user_alerted');
-            $table->foreign('user_alerted')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
-            $table->boolean('visualized');
+            $table->longText('mensagem');
 
             $table->timestamps();
         });

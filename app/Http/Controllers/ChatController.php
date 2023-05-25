@@ -23,19 +23,17 @@ class ChatController extends Controller
                   ->orWhere('user_two', Auth()->user()->id);
         })
         ->with(['userOne', 'userTwo'])
-        ->get()
-        ->map(function ($match) {
-            $match->userMatched = isset($match->userOne) ? $match->userOne : $match->userTwo;
-            return $match;
-        });
+        ->get();
 
         return view('chat', compact('matchs'));
     }
 
     public function chat()
     {
-        
+        $match = Matchs::find($this->request->id)
+        ->with('userOne', 'userTwo') // mensagens
+        ->get();
 
-        return 
+        return 1;
     }
 }
