@@ -31,9 +31,9 @@ class ChatController extends Controller
     public function chat()
     {
         $match = Matchs::find($this->request->id)
-        ->with('userOne', 'userTwo') // mensagens
+        ->with('userOne', 'userTwo', 'mensagens')
         ->get();
 
-        return 1;
+        return view('ajax.chat.openChat', compact('match'));
     }
 }

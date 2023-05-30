@@ -27,6 +27,9 @@
 .usuario:hover {
     background-color: #adb5bd1c;
 }
+.active {
+    background-color: #adb5bd1c;
+}
 .horario {
     font-size: 10px;
     color: #adb5bd;
@@ -34,4 +37,52 @@
 .ultimaMensagem {
     font-size: 12px;
     color: #81868b;
+}
+#areaBusca {
+    height: 100px;
+}
+
+.search-input {
+    position: relative;
+    width: 100%;
+}
+  
+.search-input input[type="text"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #30303048;
+    border: none;
+    color: #ffffff;
+    border-radius: 20px;
+    transition: 1s ease all;
+}
+  
+  .search-input input[type="text"]::placeholder {
+    color: #aaaaaa;
+  }
+  
+  .search-input .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #aaaaaa;
+    cursor: pointer;
+    width: 20px; /* Defina o tamanho desejado para o ícone */
+    height: 20px;
+  }
+  
+  .search-input .search-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+
+/* CHAT */
+#conversa header {
+    height: 69px;
+    border: 1px solid red;
+    width: 100%;
 }

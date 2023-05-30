@@ -30,4 +30,9 @@ class Matchs extends Model
     {
         return isset($this->userOne) ? $this->userOne : $this->userTwo;
     }
+
+    public function mensagens()
+    {
+        return $this->hasMany(Mensagens::class, 'id', 'match_id');
+    }
 }
