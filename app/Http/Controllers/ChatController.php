@@ -32,7 +32,7 @@ class ChatController extends Controller
     {
         $match = Matchs::find($this->request->id)
         ->with('userOne', 'userTwo', 'mensagens')
-        ->get();
+        ->first();
 
         return view('ajax.chat.openChat', compact('match'));
     }

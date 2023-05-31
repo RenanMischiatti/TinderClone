@@ -51,7 +51,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-9 d-lg-flex justify-content-lg-center d-none" id="areaChat">
+            <div class="col-9 d-lg-flex justify-content-lg-center d-none p-0" id="areaChat">
 
                 <div class="w-25 align-self-center opacity-25">
                     <img src="{{asset('img/logo_inicio.png')}}" class="w-100 img-fluid" alt="">

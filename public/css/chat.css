@@ -82,7 +82,12 @@
 
 /* CHAT */
 #conversa header {
-    height: 69px;
-    border: 1px solid red;
+    height: 80px;
     width: 100%;
+    display: flex;
+    background-color: #adb5bd09;
+}
+
+#conversa header .nome {
+    font-size: 20px;
 }
