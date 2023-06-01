@@ -17,7 +17,7 @@
     margin: 5px 0px;
     border-radius: 7px;
     padding: 1px 16px;
-    transition: ease 0.4s all;
+    transition: ease 0.4s background;
     cursor: pointer;
 }
 .usuario img {

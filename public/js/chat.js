@@ -11,7 +11,7 @@ $(document).ready( function () {
 
         $('.usuario').each(function() {
             var nome = $(this).find('.nome').text().toLowerCase();
-            nome.includes(busca) ? $(this).show() : $(this).hide()
+            nome.includes(busca) ? $(this).slideDown() : $(this).slideUp()
         });
     });
 
