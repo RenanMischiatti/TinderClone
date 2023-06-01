@@ -89,5 +89,23 @@
 }
 
 #conversa header .nome {
-    font-size: 20px;
+    font-size: 16px;
+}
+#conversa header .status {
+    font-size: 12px;
+}
+
+#conversa header .foto {
+   
+}
+#conversa header .foto img {
+    align-self: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+#sendMensageArea {
+    height: 100px;
 }
