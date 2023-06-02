@@ -1,5 +1,5 @@
-<main class="w-100 h-100 d-flex flex-column" id="conversa">
-    <header class="d-flex">
+<section class="w-100 h-100 d-flex flex-column" id="conversa">
+    <header>
         <div class="d-flex justify-center p-3 foto">
             <img src="{{$match->UserMatched->foto->first()->FotCaminho}}" class="rounded-circle" alt=""> 
         </div>
@@ -8,11 +8,18 @@
             <b class="text-success status">online</b>
         </div>
     </header>
-    <section id="chat" class="h-100" style="border: 1px solid red">
+
+    <section id="chat" class="h-100">
 
     </section>
+    
     <section id="sendMensageArea">
 
+        <div class="areaInput">
+            <textarea type="text" placeholder="Digite uma mensagem..." rows="1"></textarea>
+            <button class="send-button" disabled>&#10148;</button>
+        </div>
+
     </section>
 
-</main>  
+</section>  
