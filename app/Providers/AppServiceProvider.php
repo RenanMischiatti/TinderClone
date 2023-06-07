@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         Matchs::observe(MatchObserver::class);
 
         if (config('app.env') === 'production') {
-            URL::forceScheme('http');
+            URL::forceScheme('https');
         }
     }
 }
