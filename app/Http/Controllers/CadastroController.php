@@ -23,12 +23,17 @@ class CadastroController extends Controller
     protected $estados;
 
     public function __construct(Request $request) {
-        $this->estados = json_decode(
-            Http::get(
-                'https://servicodados.ibge.gov.br/api/v1/localidades/estados',
-                ['order_by' => 'nome']
-            )->body()
-        );
+        if(env('APP_ENV') != 'local') {
+
+            $this->estados = json_decode(
+                Http::get(
+                    'https://servicodados.ibge.gov.br/api/v1/localidades/estados',
+                    ['order_by' => 'nome']
+                    )->body()
+                );
+        } else {
+            $this->estados = ['São paulo'];
+        }
         $this->request = $request;
     }
     
