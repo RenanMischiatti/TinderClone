@@ -23,7 +23,7 @@ class CadastroController extends Controller
     protected $estados;
 
     public function __construct(Request $request) {
-        if(env('APP_ENV') != 'local') {
+        if(env('APP_ENV') == 'local') {
 
             $this->estados = json_decode(
                 Http::get(

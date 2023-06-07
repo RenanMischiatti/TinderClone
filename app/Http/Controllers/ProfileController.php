@@ -27,7 +27,7 @@ class ProfileController extends Controller
 
     public function __construct(Request $request) {
 
-        if(env('APP_ENV') != 'local') {
+        if(env('APP_ENV') == 'local') {
 
             $this->estados = json_decode(
                 Http::get(
